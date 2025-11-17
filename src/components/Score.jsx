@@ -9,9 +9,9 @@ function Score() {
   return (
     <mesh>
          <Text
-            position={[31, 20, 0]} 
+            position={[-3, 21, 0]} 
             rotation={[degToRad(0),degToRad(0),degToRad(360)]}
-            fontSize={1}
+            fontSize={0.8}
             color="white"
             anchorX={0}
             anchorY={0}> 

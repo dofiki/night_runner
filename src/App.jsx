@@ -1,7 +1,7 @@
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, GizmoHelper, GizmoViewport } from '@react-three/drei';
-import { Physics, Debug } from '@react-three/cannon';
-
+import { Physics } from '@react-three/cannon';
+import controls_lg from './assests/controls_lg.png'
 import Player from './components/Player';
 import Ground from './components/Ground';
 import HelpPanel from './components/HelpPanel';
@@ -10,6 +10,7 @@ import GrassLeft from './components/sideway/GrassLeft';
 import GrassRight from './components/sideway/GrassRight';
 import NightGuard from './components/NightGuard';
 import Score from './components/Score';
+import MobileControls from './components/MobileControls';
 
 function App() {
   return (
@@ -20,16 +21,15 @@ function App() {
 
         {/* helpers */}
         <GizmoHelper alignment='bottom-right' margin={[80, 80]}>
-          <GizmoViewport />
         </GizmoHelper>
-        <OrbitControls />
+
 
         {/* lights */}
         <ambientLight intensity={0.5} color="white" /> 
         <spotLight
-          position={[20, 37, -25]} 
+          position={[-15, 20, 45]} 
           angle={Math.PI / 5}
-          intensity={120} 
+          intensity={200} 
           distance={80} 
           decay={1}
           penumbra={0.5}
@@ -38,10 +38,34 @@ function App() {
           shadow-mapSize-width={1024}
           shadow-mapSize-height={1024}
         />  
-
+  
+       <spotLight
+          position={[10, 30, -100]} 
+          angle={Math.PI / 5}
+          intensity={150} 
+          distance={80} 
+          decay={1}
+          penumbra={0.5}
+          castShadow
+          color="white"
+          shadow-mapSize-width={1024}
+          shadow-mapSize-height={1024}
+        />  
+          
+       <spotLight
+          position={[-20, 30, -180]} 
+          angle={Math.PI / 5}
+          intensity={200} 
+          distance={80} 
+          decay={1}
+          penumbra={0.5}
+          castShadow
+          color="white"
+          shadow-mapSize-width={1024}
+          shadow-mapSize-height={1024}
+        />  
         {/* scene with debug body */}
-        <Physics>
-          <Debug color="hotpink" scale={1.1}>
+        <Physics> 
             <Ground />
             <Player />
             <NightGuard />
@@ -49,11 +73,15 @@ function App() {
             <EnemyPanel />
             <GrassLeft />
             <GrassRight />
-          </Debug>
         </Physics>
 
         <Score />
+        
       </Canvas>
+      <MobileControls />
+      <div className='absolute bottom-10'>
+        <img src={controls_lg} className='w-50 opacity-45' />
+      </div>
     </div>
   );
 }
