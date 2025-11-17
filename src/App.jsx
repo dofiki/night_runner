@@ -79,9 +79,11 @@ function App() {
         
       </Canvas>
       <MobileControls />
-      <div className='absolute bottom-10'>
+
+      <div className='absolute bottom-10 hidden xl:flex'>
         <img src={controls_lg} className='w-50 opacity-45' />
       </div>
+
     </div>
   );
 }
